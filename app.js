@@ -2,7 +2,7 @@ const fs = require("fs");
 const moment = require("moment");
 const { loremIpsum } = require("lorem-ipsum");
 
-const logname = moment(new Date()).format("hhmmss");
+const logname = moment(new Date()).format("yyyyMMDD-HHmmss");
 
 const logger = fs.createWriteStream(`${logname}.txt`, {
   flags: "a",
@@ -39,7 +39,7 @@ const chooseWithChance = () => {
 
 (() => {
   setInterval(() => {
-    const time = moment(new Date()).format("yyyy-mm-dd HH:MM:SS.ss");
+    const time = moment(new Date()).format("yyyy-MM-DD HH:mm:ss.SSS");
     const log = `${time} - ${chooseWithChance()}: ${loremIpsum()} \n`;
     console.log(log);
     logger.write(log);
